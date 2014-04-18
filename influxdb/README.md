@@ -32,7 +32,7 @@ $ gem install influxdb
 Load data:
 
 ```
-$ ./load_sine_data.rb
+$ ./run_sine_data.rb
 ```
 
 Go to [the admin page](http://127.0.0.1:8083), select "Explore Data" on the "test database" then execute the query:
@@ -41,7 +41,7 @@ Go to [the admin page](http://127.0.0.1:8083), select "Explore Data" on the "tes
 SELECT value FROM sine;
 ```
 
-Kill the `load_sine_data.rb` script when you are done.
+Kill the `run_sine_data.rb` script when you are done.
 
 
 ## Init database with sensors data
@@ -81,22 +81,32 @@ $ git clone git@github.com:obfuscurity/tasseo.git
 $ cd tasseo
 ```
 
-Edit file `dashboards/temperatures.js`:
+Edit file `dashboards/test.js`:
 
 ```
-var metrics =
-[
-  {
-    target: "temperature",
-    series: "sensors",
-    warning: 21,
-    critical: 25
-  },
+var period = 5;
+var refresh = 5000;
+
+var nodes = [ 2, 3, 4, 27, 28, 29 ];
+
+var metrics = [
   {
     target: "value",
     series: "sine"
   }
 ];
+
+_.each(nodes, function(node_id) {
+  metrics.push({
+    target: "temperature",
+    series: "sensors",
+    where: "node_id = " + node_id,
+    warning: 21,
+    critical: 25,
+    alias: "Node " + node_id,
+    unit: "C"
+  });
+}, this);
 ```
 
 Launch tasseo:
@@ -109,8 +119,9 @@ $ foreman start
 $ open http://127.0.0.1:5000
 ```
 
-Launch sine data:
+Launch live data:
 
 ```
-$ ./load_sine_data.rb
+$ ./run_csv_data.rb
+$ ./run_sine_data.rb
 ```

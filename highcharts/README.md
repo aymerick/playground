@@ -1,10 +1,10 @@
-rickshaw
-========
+highcharts
+==========
 
 Setup influxdb.
 
 ```
-$ ./run_csv_data.rb
+$ ./load_csv_data.rb
 ```
 
 Open `temperatures.html`.

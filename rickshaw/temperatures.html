@@ -1,0 +1,89 @@
+<!doctype html>
+<head>
+    <title>Playing with Rickshaw</title>
+
+    <link rel="stylesheet" type="text/css" href="./vendor/rickshaw.min.css">
+    <link rel="stylesheet" href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.10.4/themes/smoothness/jquery-ui.css" />
+
+    <script src="./vendor/d3.min.js" type="text/javascript"></script>
+    <script src="./vendor/d3.layout.min.js" type="text/javascript"></script>
+    <script src="./vendor/rickshaw.js" type="text/javascript"></script>
+
+    <script src="http://get.influxdb.org/influxdb-latest.js" type="text/javascript"></script>
+
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js" type="text/javascript"></script>
+    <script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.10.4/jquery-ui.min.js"></script>
+    <script src="http://underscorejs.org/underscore-min.js" type="text/javascript"></script>
+
+    <style>
+    #y_axis {
+        float: left;
+        width: 40px;
+    }
+    </style>
+</head>
+
+<body>
+
+<h1>Data from InfluxDB</h1>
+
+<h2>All temperatures</h2>
+
+<div id="chart_container">
+    <div id="y_axis"></div>
+    <div id="chart"></div>
+    <div id="legend"></div>
+</div>
+
+<script>
+$(function() {
+  var palette = new Rickshaw.Color.Palette( { scheme: 'cool' } );
+
+  var influxdb = new InfluxDB({ host: "127.0.0.1", port: 8086, username: "root", password: "root", database: "test" });
+
+  influxdb.query("SELECT temperature, node_id FROM sensors WHERE time > NOW() - 24h;", function(points) {
+    var nodes = _.groupBy(points, function(point){ return point.node_id; });
+    var series = [ ];
+
+    _.each(nodes, function(points, node_id) {
+        series.push({
+            name: 'node ' + node_id,
+            data: points.map(function(point) { return { x: point.time / 1000, y: point.temperature }; }).reverse(),
+            color: palette.color()
+        });
+    });
+
+    var graph = new Rickshaw.Graph( {
+        element: document.getElementById("chart"),
+        width: 800,
+        height: 300,
+        renderer: 'line',
+        series: series,
+        min: 'auto'
+    } );
+
+    var xAxis = new Rickshaw.Graph.Axis.Time({
+        graph: graph,
+        orientation: 'bottom'
+    });
+
+    var y_axis = new Rickshaw.Graph.Axis.Y( {
+        graph: graph,
+        orientation: 'left',
+        tickFormat: Rickshaw.Fixtures.Number.formatKMBT,
+        element: document.getElementById('y_axis')
+    } );
+
+    var legend = new Rickshaw.Graph.Legend( {
+        graph: graph,
+        element: document.querySelector('#legend')
+    } );
+
+    var hoverDetail = new Rickshaw.Graph.HoverDetail( {
+        graph: graph
+    } );
+
+    graph.render();
+  });
+});
+</script>

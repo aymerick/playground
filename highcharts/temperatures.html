@@ -1,0 +1,236 @@
+<!doctype html>
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8">
+    <title>Playing with Highcharts</title>
+
+    <script src="../influxdb/vendor/influxdb-latest.js" type="text/javascript"></script>
+
+    <script src="../vendor/jquery-2.1.0.min.js" type="text/javascript"></script>
+    <script src="../vendor/underscore-min.js" type="text/javascript"></script>
+
+    <script src="./vendor/highcharts.js" type="text/javascript"></script>
+    <script src="./vendor/highcharts-more.js" type="text/javascript"></script>
+    <script src="./vendor/exporting.js" type="text/javascript"></script>
+
+    <style>
+    .container {
+        min-width: 310px;
+        height: 400px;
+        margin: 0 auto;
+    }
+    </style>
+</head>
+
+<body>
+
+<h1>Data from InfluxDB</h1>
+
+<h2>All temperatures</h2>
+
+<div id="container1" class="container"></div>
+
+<script>
+$(function() {
+  var influxdb = new InfluxDB({ host: "127.0.0.1", port: 8086, username: "root", password: "root", database: "test" });
+
+  influxdb.query("SELECT temperature, node_id FROM sensors GROUP BY time(5m) WHERE time > NOW() - 2d;", function(points) {
+    var nodes = _.groupBy(points, function(point){ return point.node_id; });
+    var series = [ ];
+
+    _.each(nodes, function(points, node_id) {
+        series.push({
+          name: 'Node ' + node_id,
+          data: points.map(function(point) { return [ point.time.getTime(), point.temperature ]; }).reverse()
+        });
+    });
+
+    $('#container1').highcharts({
+        title: {
+            text: 'Temperatures for all nodes'
+        },
+
+        xAxis: {
+            type: 'datetime'
+        },
+
+        yAxis: {
+            title: {
+                text: 'Temperature (°C)'
+            }
+        },
+
+        tooltip: {
+            crosshairs: true,
+            shared: true,
+            valueSuffix: '°C'
+        },
+
+        legend: {
+            layout: 'vertical',
+            align: 'right',
+            verticalAlign: 'middle',
+            borderWidth: 0
+        },
+
+        series: series
+    });
+  });
+});
+</script>
+
+<h2>Temperatures for node 27</h2>
+
+<div id="container2" class="container"></div>
+
+<script>
+$(function() {
+  var influxdb = new InfluxDB({ host: "127.0.0.1", port: 8086, username: "root", password: "root", database: "test" });
+
+  influxdb.query("SELECT MEAN(temperature), MIN(temperature), MAX(temperature) FROM sensors GROUP BY time(1h) WHERE time > NOW() - 2d AND node_id=27;", function(points) {
+    var series = [
+        {
+            name: 'Average',
+            data: points.map(function(point) { return [ point.time.getTime(), Number(point.mean.toFixed(1)) ]; }).reverse(),
+            zIndex: 1,
+            marker: {
+              fillColor: 'white',
+              lineWidth: 2,
+              lineColor: Highcharts.getOptions().colors[0]
+            }
+        },
+        {
+            name: 'Min/Max',
+            data: points.map(function(point) { return [ point.time.getTime(), point.min, point.max ]; }).reverse(),
+            type: 'arearange',
+            lineWidth: 0,
+            linkedTo: ':previous',
+            color: Highcharts.getOptions().colors[0],
+            fillOpacity: 0.3,
+            zIndex: 0
+        }
+    ];
+
+    $('#container2').highcharts({
+        title: {
+            text: 'Temperatures for node 27'
+        },
+
+        xAxis: {
+            type: 'datetime'
+        },
+
+        yAxis: {
+            title: {
+                text: null
+            }
+        },
+
+        tooltip: {
+            crosshairs: true,
+            shared: true,
+            valueSuffix: '°C'
+        },
+
+        legend: {
+        },
+
+        series: series
+    });
+  });
+});
+</script>
+
+<h2>Temperatures and humidity for node 2</h2>
+
+<div id="container3" class="container"></div>
+
+<script>
+$(function() {
+  var influxdb = new InfluxDB({ host: "127.0.0.1", port: 8086, username: "root", password: "root", database: "test" });
+
+  influxdb.query("SELECT MEAN(temperature) AS temp, MEAN(humidity) AS humi FROM sensors GROUP BY time(1d) WHERE time > NOW() - 1w AND node_id=2;", function(points) {
+    var series = [
+        {
+            name: 'Temperature',
+            type: 'spline',
+            data: points.map(function(point) { return [ point.time.getTime(), Number(point.temp.toFixed(1)) ]; }).reverse(),
+            zIndex: 1,
+            marker: {
+              fillColor: 'white',
+              lineWidth: 2,
+              lineColor: Highcharts.getOptions().colors[0]
+            },
+            tooltip: {
+                valueSuffix: '°C'
+            }
+        },
+        {
+            name: 'Humidity',
+            data: points.map(function(point) { return [ point.time.getTime(), Math.round(point.humi)]; }).reverse(),
+            type: 'spline',
+            yAxis: 1,
+            marker: {
+              fillColor: 'white',
+              lineWidth: 2,
+              lineColor: '#00FF00'
+            },
+            tooltip: {
+                valueSuffix: '%'
+            },
+            color: '#00FF00'
+        }
+    ];
+
+    $('#container3').highcharts({
+        title: {
+            text: 'Temperatures/Humidity for node 2'
+        },
+
+        xAxis: {
+            type: 'datetime'
+        },
+
+        yAxis: [
+            { // Primary yAxis
+                labels: {
+                    format: '{value}°C',
+                    style: {
+                        color: Highcharts.getOptions().colors[0]
+                    }
+                },
+                title: {
+                    text: 'Temperature',
+                    style: {
+                        color: Highcharts.getOptions().colors[0]
+                    }
+                }
+            }, { // Secondary yAxis
+                title: {
+                    text: 'Humidity',
+                    style: {
+                        color: Highcharts.getOptions().colors[1]
+                    }
+                },
+                labels: {
+                    format: '{value}%',
+                    style: {
+                        color: Highcharts.getOptions().colors[1]
+                    }
+                },
+                opposite: true
+            }
+        ],
+
+        tooltip: {
+            crosshairs: true,
+            shared: true,
+        },
+
+        series: series
+    });
+  });
+});
+</script>
+
+</body>
+</html>

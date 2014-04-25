@@ -41,7 +41,7 @@ $(function() {
 
   var influxdb = new InfluxDB({ host: "127.0.0.1", port: 8086, username: "root", password: "root", database: "test" });
 
-  influxdb.query("SELECT temperature, node_id FROM sensors WHERE time > NOW() - 24h;", function(points) {
+  influxdb.query("SELECT temperature, node_id FROM sensors WHERE time > NOW() - 2d;", function(points) {
     var nodes = _.groupBy(points, function(point){ return point.node_id; });
     var series = [ ];
 

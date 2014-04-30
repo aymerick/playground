@@ -1,4 +1,4 @@
 playground
 ==========
 
-My playground
+My playground.

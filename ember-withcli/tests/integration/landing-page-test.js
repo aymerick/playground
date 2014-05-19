@@ -11,7 +11,7 @@ module('Integration - Landing Page', {
   }
 });
 
-test('Should welcome me to Boston Ember', function() {
+test('Should welcome me to Ember', function() {
   visit('/').then(function() {
     equal(find('h2#title').text(), 'Welcome to Ember.js');
   });

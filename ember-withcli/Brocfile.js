@@ -31,13 +31,26 @@ app.import('vendor/ic-ajax/dist/named-amd/main.js', {
 });
 
 // Bootstrap
-app.import('vendor/bootstrap/dist/js/bootstrap.js');
-app.import('vendor/bootstrap/dist/css/bootstrap.css');
+app.import({
+  development: 'vendor/bootstrap/dist/js/bootstrap.js',
+  production:  'vendor/bootstrap/dist/js/bootstrap.min.js'
+})
+
+app.import({
+  development: 'vendor/bootstrap/dist/css/bootstrap.css',
+  production:  'vendor/bootstrap/dist/css/bootstrap.min.css'
+})
 
 // Moment
-app.import('vendor/momentjs/moment.js');
+app.import({
+  development: 'vendor/momentjs/moment.js',
+  production:  'vendor/momentjs/min/moment.min.js'
+})
 
 // Showdown
-app.import('vendor/showdown/src/showdown.js');
+app.import({
+  development: 'vendor/showdown/src/showdown.js',
+  production:  'vendor/showdown/compressed/showdown.js'
+})
 
 module.exports = app.toTree();

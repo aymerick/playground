@@ -34,4 +34,10 @@ app.import('vendor/ic-ajax/dist/named-amd/main.js', {
 app.import('vendor/bootstrap/dist/js/bootstrap.js');
 app.import('vendor/bootstrap/dist/css/bootstrap.css');
 
+// Moment
+app.import('vendor/momentjs/moment.js');
+
+// Showdown
+app.import('vendor/showdown/src/showdown.js');
+
 module.exports = app.toTree();

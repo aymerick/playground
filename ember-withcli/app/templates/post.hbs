@@ -1,0 +1,21 @@
+<form role="form">
+  {{#if isEditing}}
+    {{partial 'post/edit'}}
+    <button {{action 'doneEditing'}} type="button" class="btn btn-default">Done</button>
+  {{else}}
+    <button {{action 'edit'}} type="button" class="btn btn-default">Edit</button>
+  {{/if}}
+</form>
+
+<h1>{{title}}</h1>
+<h2>by {{author.name}} <small class='text-muted'>({{format-date date}})</small></h2>
+
+<hr />
+
+<div class='intro'>
+  {{format-markdown excerpt}}
+</div>
+
+<div class='below-the-fold'>
+  {{format-markdown body}}
+</div>

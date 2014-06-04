@@ -41,7 +41,10 @@
     "andThen",
     "currentURL",
     "currentPath",
-    "currentRouteName"
+    "currentRouteName",
+    "moment",
+    "Showdown",
+    "Handlebars"
   ],
   "node" : false,
   "browser" : false,

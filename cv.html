@@ -15,42 +15,81 @@
     width: 100%;
     text-align: center;
     box-sizing: content-box;
-    margin: 10em 0;
+    margin: 1em 0;
     padding: 0;
     width: 100%;
-    height: 3px;
-    background: #a00;
+}
 
-    border: 2px solid #fff;
-    border-left: none;
-    border-right: none;
-    border-bottom: none;
+@media (max-width: 520px) {
+    .resume:before {
+        display: block;
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        margin: 0 auto;
+        width: 3px;
+        border: 2px solid #fff;
+        background: #a00;
+        -webkit-box-shadow: -1px 0 0 0 #a00;
+        -moz-box-shadow: -1px 0 0 0 #a00;
+        box-shadow: -1px 0 0 0 #a00;
+        content: "";
+        line-height: 0;
+    }
 
-    -webkit-box-shadow: 0 -1px 0 0px #a00;
-    -moz-box-shadow: 0 -1px 0 0px #a00;
-    box-shadow: 0 -1px 0 0px #a00;
+    .resume:after {
+        clear: both;
+        display: table;
+        content: "";
+        line-height: 0;
+    }
+}
+
+@media (min-width: 521px) {
+    .resume {
+        margin: 10em 0;
+
+        height: 3px;
+        background: #a00;
+
+        border: 2px solid #fff;
+        border-left: none;
+        border-right: none;
+        border-bottom: none;
+
+        -webkit-box-shadow: 0 -1px 0 0px #a00;
+        -moz-box-shadow: 0 -1px 0 0px #a00;
+        box-shadow: 0 -1px 0 0px #a00;
+    }
 }
 
 .timeline {
     position: relative;
     max-width: 960px;
-    height: 9px;
     margin: 0 auto;
 }
 
-.timeline > .year:last-child {
-    right: 1.35em;
+@media (min-width: 521px) {
+    .timeline {
+        height: 9px;
+    }
+
+    .timeline > .year:last-child {
+        right: 1.35em;
+    }
 }
 
 .year {
+    position: static;
+
     box-sizing: border-box;
     display: block;
-    position: absolute;
-    top: -1.5em;
     width: 3.2em;
     height: 3.2em;
-    margin: 0 auto;
     background: #fff scroll;
+    margin: 0 auto;
 
     -webkit-background-size: 485px;
     -moz-background-size: 485px;
@@ -72,7 +111,15 @@
     border-radius: 1.7em;
 }
 
+@media (min-width: 521px) {
+    .year {
+        position: absolute;
+        top: -1.5em;
+    }
+}
+
 .entry {
+    position: static;
     height: 80px;
 
     -webkit-box-sizing: border-box;
@@ -81,9 +128,9 @@
 
     font-family: Helvetica, Arial, sans-serif;
     font-size: 14px;
+    background-color: #fff;
 
-    position: absolute;
-    margin: 0 1em;
+    margin: 2em 1em;
     padding: .4em;
 
     -webkit-background-size: 485px;
@@ -96,6 +143,13 @@
     -webkit-box-shadow: 0 0 0 1px #a00, 0 0 0 3px #fff, 0 0 0 6px #a00, 0 0 0 8px #fff;
     -moz-box-shadow: 0 0 0 1px #a00, 0 0 0 3px #fff, 0 0 0 6px #a00, 0 0 0 8px #fff;
     box-shadow: 0 0 0 1px #a00, 0 0 0 3px #fff, 0 0 0 6px #a00, 0 0 0 8px #fff;
+}
+
+@media (min-width: 521px) {
+    .entry {
+        position: absolute;
+        margin: 0 1em;
+    }
 }
 
 .entry h1 {
@@ -116,94 +170,96 @@
     margin-bottom: 5px;
 }
 
-.entry:before {
-    display: block;
-    position: absolute;
-    content: "";
-    left: 50%;
-    margin-left: -2px;
-    width: 3px;
-    height: 36px;
-    background-color: #a00;
-    border: 2px solid #fff;
-    border-top: none;
-    border-bottom: none;
-}
-
-.job {
-    top: -125px;
-}
-.job:before {
-    bottom: -45px;
-    -webkit-box-shadow: 3px -1px 0px -2px #a00;
-    -moz-box-shadow: 3px -1px 0px -2px #a00;
-    box-shadow: 3px -1px 0px -2px #a00;
-}
-
-.oss {
-    bottom: -119px;
-}
-.oss:before {
-    top: -45px;
-    -webkit-box-shadow: 1px 0px 0px 0px #a00;
-    -moz-box-shadow: 1px 0px 0px 0px #a00;
-    box-shadow: 1px 0px 0px 0px #a00;
-}
-
-.oss.level2 {
-    bottom: -219px;
-}
-
-.oss.level2:before {
-    top: -145px;
-    height: 136px;
-}
-
-.yaccom {
-    left: 5%;
-    width: 200px;
-}
-.yaccom:before {
-    left: 10%;
-}
-
-.newlc {
-    left: 30%;
-    width: 200px;
-}
-.newlc:before {
-    left: 10%;
-}
-
-.fotopedia {
-    left: 55%;
-    width: 300px;
-}
-.fotopedia:before {
-    left: 10%;
-}
-
-.wbxml {
-    left: 15%;
-}
-
-.fwissr {
-    left: 51%;
-}
-.fwissr:before {
-    left: 60%;
-}
-
-.activr {
-    left: 62%;
-    bottom: -190px;
-}
-
-.jeego {
-    left: 74%;
-}
-.jeego:before {
-    left: 65%;
+@media (min-width: 521px) {
+  .entry:before {
+      display: block;
+      position: absolute;
+      content: "";
+      left: 50%;
+      margin-left: -2px;
+      width: 3px;
+      height: 36px;
+      background-color: #a00;
+      border: 2px solid #fff;
+      border-top: none;
+      border-bottom: none;
+  }
+  
+  .job {
+      top: -125px;
+  }
+  .job:before {
+      bottom: -45px;
+      -webkit-box-shadow: 3px -1px 0px -2px #a00;
+      -moz-box-shadow: 3px -1px 0px -2px #a00;
+      box-shadow: 3px -1px 0px -2px #a00;
+  }
+  
+  .oss {
+      bottom: -119px;
+  }
+  .oss:before {
+      top: -45px;
+      -webkit-box-shadow: 1px 0px 0px 0px #a00;
+      -moz-box-shadow: 1px 0px 0px 0px #a00;
+      box-shadow: 1px 0px 0px 0px #a00;
+  }
+  
+  .oss.level2 {
+      bottom: -219px;
+  }
+  
+  .oss.level2:before {
+      top: -145px;
+      height: 136px;
+  }
+  
+  .yaccom {
+      left: 5%;
+      width: 200px;
+  }
+  .yaccom:before {
+      left: 10%;
+  }
+  
+  .newlc {
+      left: 30%;
+      width: 200px;
+  }
+  .newlc:before {
+      left: 10%;
+  }
+  
+  .fotopedia {
+      left: 55%;
+      width: 300px;
+  }
+  .fotopedia:before {
+      left: 10%;
+  }
+  
+  .wbxml {
+      left: 15%;
+  }
+  
+  .fwissr {
+      left: 51%;
+  }
+  .fwissr:before {
+      left: 60%;
+  }
+  
+  .activr {
+      left: 62%;
+      bottom: -190px;
+  }
+  
+  .jeego {
+      left: 74%;
+  }
+  .jeego:before {
+      left: 65%;
+  }
 }
     </style>
 </head>
@@ -217,28 +273,32 @@
             <h1>Telecom industry</h1>
             WAP, MMS...
         </div>
+
+        <div class="entry oss wbxml">
+            <h1>WBXML library</h1>
+            WBXML parser and encoder
+        </div>
+
         <div class="entry job newlc">
             <h1>Apple contractor</h1>
             SyncML protocol in iSync
         </div>
+
         <div class="entry job fotopedia">
             <h1>Fotopedia</h1>
             Full stack web developer
         </div>
 
-        <!-- OSS -->
-        <div class="entry oss wbxml">
-            <h1>WBXML library</h1>
-            WBXML parser and encoder
-        </div>
         <div class="entry oss fwissr">
             <h1>Fwissr</h1>
             Configuration registry tool
         </div>
+
         <div class="entry oss level2 activr">
             <h1>Activr</h1>
             Activity news feed system
         </div>
+
         <div class="entry oss jeego">
             <h1>Jeego</h1>
             DIY home monitoring

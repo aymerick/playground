@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>Open Street Map test</title>
+  <link rel="stylesheet" href="http://cdn.leafletjs.com/leaflet-0.7.2/leaflet.css" />
+
+  <style>
+    #map { height: 500px; }
+  </style>
+</head>
+<body>
+
+  <div id="map"></div>
+
+  <script src="http://cdn.leafletjs.com/leaflet-0.7.2/leaflet.js"></script>
+  <script>
+
+    var map = L.map('map').setView([48.183416, -1.642345], 15);
+
+    L.tileLayer('https://{s}.tiles.mapbox.com/v3/{id}/{z}/{x}/{y}.png', {
+      maxZoom: 18,
+      attribution: 'Map data &copy; <a href="http://openstreetmap.org">OpenStreetMap</a> contributors, ' +
+        '<a href="http://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, ' +
+        'Imagery © <a href="http://mapbox.com">Mapbox</a>',
+      id: 'examples.map-i86knfo3'
+    }).addTo(map);
+
+
+    L.marker([48.176911, -1.634885]).addTo(map)
+      .bindPopup("<b>Coucou!</b><br />Hihihi")
+      .openPopup();
+
+    L.circle([48.183416, -1.642345], 500, {
+      color: 'red',
+      fillColor: '#f03',
+      fillOpacity: 0.5
+    }).addTo(map).bindPopup("Laisse Betton, keum...");
+
+
+    var popup = L.popup();
+
+    function onMapClick(e) {
+      popup.setLatLng(e.latlng)
+        .setContent("You clicked the map at: " + e.latlng.toString())
+        .openOn(map);
+    }
+
+    map.on('click', onMapClick);
+
+  </script>
+
+</body>
+</html>

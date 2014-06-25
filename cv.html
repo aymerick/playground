@@ -118,63 +118,81 @@
     .entry {
         position: absolute;
         margin: 0 1em;
+        width: 200px;
+        min-height: 60px;
     }
 
     .entry:before {
+        display: block;
+        position: absolute;
+        content: "";
+
+        top: 50%;
+        margin-top: -2px;
+        width: 57px;
+        height: 3px;
+        background-color: #ab423f;
+        border: 2px solid #f5f5ef;
+        border-left: none;
+        border-right: none;
     }
-    
+
     .job {
-        left: -260px
+        left: -260px;
     }
     .job:before {
+        right: -68px;
+
+        -webkit-box-shadow: -1px -3px 0px -2px #ab423f;
+        -moz-box-shadow: -1px -3px 0px -2px #ab423f;
+        box-shadow: -1px -3px 0px -2px #ab423f;
     }
-    
+
     .oss {
         right: -262px;
     }
     .oss:before {
+        left: -68px;
+
+        -webkit-box-shadow: 0 -1px 0px 0px #ab423f;
+        -moz-box-shadow: 0 -1px 0px 0px #ab423f;
+        box-shadow: 0 -1px 0px 0px #ab423f;
     }
-    
-    .oss.level2 {
-    }
-    
-    .oss.level2:before {
-    }
-    
+
     .yaccom {
-        bottom: 80%;
+        bottom: 82%;
     }
     .yaccom:before {
     }
-    
-    .newlc {
-        bottom: 70%;
-    }
-    .newlc:before {
-    }
-    
-    .fotopedia {
-        bottom: 50%;
-    }
-    .fotopedia:before {
-    }
-    
+
     .wbxml {
         bottom: 75%;
     }
-    
+
+    .newlc {
+        bottom: 59%;
+    }
+    .newlc:before {
+    }
+
+    .fotopedia {
+        bottom: 38%;
+    }
+    .fotopedia:before {
+    }
+
     .fwissr {
-        bottom: 40%;
+        bottom: 26%;
     }
     .fwissr:before {
     }
-    
+
     .activr {
-        bottom: 30%;
+        bottom: 13%;
     }
-    
+
     .jeego {
-        bottom: 20%;
+        bottom: 0%;
     }
     .jeego:before {
     }
@@ -255,7 +273,7 @@
         border-top: none;
         border-bottom: none;
     }
-    
+
     .job {
         top: -125px;
     }
@@ -265,7 +283,7 @@
         -moz-box-shadow: 3px -1px 0px -2px #a00;
         box-shadow: 3px -1px 0px -2px #a00;
     }
-    
+
     .oss {
         bottom: -119px;
     }
@@ -275,16 +293,16 @@
         -moz-box-shadow: 1px 0px 0px 0px #a00;
         box-shadow: 1px 0px 0px 0px #a00;
     }
-    
+
     .oss.level2 {
         bottom: -219px;
     }
-    
+
     .oss.level2:before {
         top: -145px;
         height: 136px;
     }
-    
+
     .yaccom {
         left: 5%;
         width: 200px;
@@ -292,7 +310,11 @@
     .yaccom:before {
         left: 10%;
     }
-    
+
+    .wbxml {
+        left: 15%;
+    }
+
     .newlc {
         left: 30%;
         width: 200px;
@@ -300,7 +322,7 @@
     .newlc:before {
         left: 10%;
     }
-    
+
     .fotopedia {
         left: 55%;
         width: 300px;
@@ -308,23 +330,19 @@
     .fotopedia:before {
         left: 10%;
     }
-    
-    .wbxml {
-        left: 15%;
-    }
-    
+
     .fwissr {
         left: 51%;
     }
     .fwissr:before {
         left: 60%;
     }
-    
+
     .activr {
         left: 62%;
         bottom: -190px;
     }
-    
+
     .jeego {
         left: 74%;
     }

@@ -14,7 +14,6 @@
     position: relative;
     width: 100%;
     text-align: center;
-    box-sizing: content-box;
     margin: 1em 0;
     padding: 0;
     width: 100%;
@@ -27,13 +26,8 @@
 }
 
 .year {
-    position: static;
-
-    box-sizing: border-box;
-    display: block;
     width: 3.2em;
     height: 3.2em;
-    background: #fff scroll;
     margin: 0 auto;
 
     -webkit-background-size: 485px;
@@ -41,15 +35,17 @@
     -o-background-size: 485px;
     background-size: 485px;
 
-    color: #5a504e;
     font-family: Helvetica, Arial, sans-serif;
     font-size: 14px;
-    line-height: 3.25em;
     text-align: center;
 
-    -webkit-box-shadow: 0 0 0 1px #a00, 0 0 0 3px #fff, 0 0 0 6px #a00, 0 0 0 8px #fff;
-    -moz-box-shadow: 0 0 0 1px #a00, 0 0 0 3px #fff, 0 0 0 6px #a00, 0 0 0 8px #fff;
-    box-shadow: 0 0 0 1px #a00, 0 0 0 3px #fff, 0 0 0 6px #a00, 0 0 0 8px #fff;
+    color: #5a504e;
+    background: #fff scroll;
+    line-height: 3.25em;
+
+    -webkit-box-shadow: 0 0 0 1px #758AA8, 0 0 0 3px #fff, 0 0 0 6px #758AA8, 0 0 0 8px #fff;
+    -moz-box-shadow: 0 0 0 1px #758AA8, 0 0 0 3px #fff, 0 0 0 6px #758AA8, 0 0 0 8px #fff;
+    box-shadow: 0 0 0 1px #758AA8, 0 0 0 3px #fff, 0 0 0 6px #758AA8, 0 0 0 8px #fff;
 
     -webkit-border-radius: 1.7em;
     -moz-border-radius: 1.7em;
@@ -57,19 +53,14 @@
 }
 
 .entry {
-    position: static;
     height: 80px;
-
-    -webkit-box-sizing: border-box;
-    -moz-box-sizing: border-box;
-    box-sizing: border-box;
+    margin: 2em 1em;
+    padding: .4em;
 
     font-family: Helvetica, Arial, sans-serif;
     font-size: 14px;
-    background-color: #fff;
 
-    margin: 2em 1em;
-    padding: .4em;
+    background-color: #fff;
 
     -webkit-background-size: 485px;
     -moz-background-size: 485px;
@@ -78,27 +69,29 @@
 
     vertical-align: middle;
 
-    -webkit-box-shadow: 0 0 0 1px #a00, 0 0 0 3px #fff, 0 0 0 6px #a00, 0 0 0 8px #fff;
-    -moz-box-shadow: 0 0 0 1px #a00, 0 0 0 3px #fff, 0 0 0 6px #a00, 0 0 0 8px #fff;
-    box-shadow: 0 0 0 1px #a00, 0 0 0 3px #fff, 0 0 0 6px #a00, 0 0 0 8px #fff;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+
+    -webkit-box-shadow: 0 0 0 1px #758AA8, 0 0 0 3px #fff, 0 0 0 6px #758AA8, 0 0 0 8px #fff;
+    -moz-box-shadow: 0 0 0 1px #758AA8, 0 0 0 3px #fff, 0 0 0 6px #758AA8, 0 0 0 8px #fff;
+    box-shadow: 0 0 0 1px #758AA8, 0 0 0 3px #fff, 0 0 0 6px #758AA8, 0 0 0 8px #fff;
 }
 
 .entry h1 {
-    display: block;
     margin: 0 auto;
-    font-size: 18px;
-    line-height: 1.2em;
-    font-weight: normal;
-    text-align: center;
-    vertical-align: middle;
+    margin-bottom: 5px;
+
+    clear: both;
+
     color: #5a504e;
 
-    display: block;
-    clear: both;
     font-size: 14px;
     font-weight: bold;
 
-    margin-bottom: 5px;
+    line-height: 1.2em;
+    text-align: center;
+    vertical-align: middle;
 }
 
 @media (min-width: 521px) and (max-width: 887px) {
@@ -119,19 +112,20 @@
         position: absolute;
         margin: 0 1em;
         width: 200px;
-        min-height: 60px;
     }
 
     .entry:before {
-        display: block;
         position: absolute;
         content: "";
 
         top: 50%;
-        margin-top: -2px;
         width: 57px;
         height: 3px;
-        background-color: #ab423f;
+
+        margin-top: -2px;
+
+        background-color: #758AA8;
+
         border: 2px solid #f5f5ef;
         border-left: none;
         border-right: none;
@@ -143,9 +137,9 @@
     .job:before {
         right: -68px;
 
-        -webkit-box-shadow: -1px -3px 0px -2px #ab423f;
-        -moz-box-shadow: -1px -3px 0px -2px #ab423f;
-        box-shadow: -1px -3px 0px -2px #ab423f;
+        -webkit-box-shadow: -1px -3px 0px -2px #758AA8;
+        -moz-box-shadow: -1px -3px 0px -2px #758AA8;
+        box-shadow: -1px -3px 0px -2px #758AA8;
     }
 
     .oss {
@@ -154,15 +148,13 @@
     .oss:before {
         left: -68px;
 
-        -webkit-box-shadow: 0 -1px 0px 0px #ab423f;
-        -moz-box-shadow: 0 -1px 0px 0px #ab423f;
-        box-shadow: 0 -1px 0px 0px #ab423f;
+        -webkit-box-shadow: 0 -1px 0px 0px #758AA8;
+        -moz-box-shadow: 0 -1px 0px 0px #758AA8;
+        box-shadow: 0 -1px 0px 0px #758AA8;
     }
 
     .yaccom {
         bottom: 82%;
-    }
-    .yaccom:before {
     }
 
     .wbxml {
@@ -172,19 +164,13 @@
     .newlc {
         bottom: 59%;
     }
-    .newlc:before {
-    }
 
     .fotopedia {
         bottom: 38%;
     }
-    .fotopedia:before {
-    }
 
     .fwissr {
         bottom: 26%;
-    }
-    .fwissr:before {
     }
 
     .activr {
@@ -194,32 +180,35 @@
     .jeego {
         bottom: 0%;
     }
-    .jeego:before {
-    }
 }
 
 @media (max-width: 887px) {
     .resume:before {
-        display: block;
         position: absolute;
+        content: "";
+        line-height: 0;
+
         top: 0;
         bottom: 0;
         left: 0;
         right: 0;
+
         margin: 0 auto;
+
         width: 3px;
+
         border: 2px solid #fff;
-        background: #a00;
-        -webkit-box-shadow: -1px 0 0 0 #a00;
-        -moz-box-shadow: -1px 0 0 0 #a00;
-        box-shadow: -1px 0 0 0 #a00;
-        content: "";
-        line-height: 0;
+        background: #758AA8;
+
+        -webkit-box-shadow: -1px 0 0 0 #758AA8;
+        -moz-box-shadow: -1px 0 0 0 #758AA8;
+        box-shadow: -1px 0 0 0 #758AA8;
     }
 
     .resume:after {
         clear: both;
         display: table;
+
         content: "";
         line-height: 0;
     }
@@ -230,16 +219,17 @@
         margin: 10em 0;
 
         height: 3px;
-        background: #a00;
+
+        background: #758AA8;
 
         border: 2px solid #fff;
         border-left: none;
         border-right: none;
         border-bottom: none;
 
-        -webkit-box-shadow: 0 -1px 0 0px #a00;
-        -moz-box-shadow: 0 -1px 0 0px #a00;
-        box-shadow: 0 -1px 0 0px #a00;
+        -webkit-box-shadow: 0 -1px 0 0px #758AA8;
+        -moz-box-shadow: 0 -1px 0 0px #758AA8;
+        box-shadow: 0 -1px 0 0px #758AA8;
     }
 
     .timeline {
@@ -261,14 +251,17 @@
     }
 
     .entry:before {
-        display: block;
         position: absolute;
         content: "";
-        left: 50%;
-        margin-left: -2px;
+
         width: 3px;
         height: 36px;
-        background-color: #a00;
+
+        left: 50%;
+        margin-left: -2px;
+
+        background-color: #758AA8;
+
         border: 2px solid #fff;
         border-top: none;
         border-bottom: none;
@@ -279,9 +272,10 @@
     }
     .job:before {
         bottom: -45px;
-        -webkit-box-shadow: 3px -1px 0px -2px #a00;
-        -moz-box-shadow: 3px -1px 0px -2px #a00;
-        box-shadow: 3px -1px 0px -2px #a00;
+
+        -webkit-box-shadow: 3px -1px 0px -2px #758AA8;
+        -moz-box-shadow: 3px -1px 0px -2px #758AA8;
+        box-shadow: 3px -1px 0px -2px #758AA8;
     }
 
     .oss {
@@ -289,9 +283,10 @@
     }
     .oss:before {
         top: -45px;
-        -webkit-box-shadow: 1px 0px 0px 0px #a00;
-        -moz-box-shadow: 1px 0px 0px 0px #a00;
-        box-shadow: 1px 0px 0px 0px #a00;
+
+        -webkit-box-shadow: 1px 0px 0px 0px #758AA8;
+        -moz-box-shadow: 1px 0px 0px 0px #758AA8;
+        box-shadow: 1px 0px 0px 0px #758AA8;
     }
 
     .oss.level2 {

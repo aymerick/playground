@@ -57,6 +57,8 @@
 }
 
 .entry {
+    position: relative;
+
     height: 80px;
     margin: 2em 1em;
     padding: .4em;
@@ -96,7 +98,26 @@
     vertical-align: middle;
 }
 
-@media (min-width: 521px) and (max-width: 887px) {
+.tags {
+    position: absolute;
+    bottom: 7px;
+    right: 1px;
+}
+
+.tags span {
+    padding: 4px;
+    margin: 2px;
+
+    color: #fff;
+    background-color: #B7CDEC;
+    font-size: 12px;
+
+    -webkit-border-radius: 4px;
+    -moz-border-radius: 4px;
+    border-radius: 4px;
+}
+
+@media (min-width: 575px) and (max-width: 887px) {
     .timeline {
         width: 47px;
         height: 800px;
@@ -359,36 +380,57 @@
         <div class="entry job yaccom">
             <h1>Telecom industry</h1>
             WAP, MMS...
+            <div class="tags">
+                <span>c</span>
+            </div>
         </div>
 
         <div class="entry oss wbxml">
             <h1>WBXML library</h1>
             WBXML parser and encoder
+            <div class="tags">
+                <span>c</span>
+            </div>
         </div>
 
         <div class="entry job newlc">
             <h1>Apple contractor</h1>
             SyncML protocol in iSync
+            <div class="tags">
+                <span>objc</span>
+            </div>
         </div>
 
         <div class="entry job fotopedia">
             <h1>Fotopedia</h1>
             Full stack web developer
+            <div class="tags">
+                <span>rails</span><span>mongodb</span><span>js</span><span>css</span><span>chef</span>
+            </div>
         </div>
 
         <div class="entry oss fwissr">
             <h1>Fwissr</h1>
             Configuration registry tool
+            <div class="tags">
+                <span>ruby</span><span>mongodb</span>
+            </div>
         </div>
 
         <div class="entry oss level2 activr">
             <h1>Activr</h1>
             Activity news feed system
+            <div class="tags">
+                <span>ruby</span><span>mongodb</span>
+            </div>
         </div>
 
         <div class="entry oss jeego">
             <h1>Jeego</h1>
             DIY home monitoring
+            <div class="tags">
+                <span>go</span><span>emberjs</span>
+            </div>
         </div>
 
         <h1 class="year">2014</h1>

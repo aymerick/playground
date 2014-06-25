@@ -13,15 +13,19 @@
 .resume {
     position: relative;
     width: 100%;
-    text-align: center;
+
     margin: 1em 0;
     padding: 0;
-    width: 100%;
+
+    text-align: center;
+
+    font-family: Helvetica, Arial, sans-serif;
 }
 
 .timeline {
     position: relative;
     max-width: 960px;
+
     margin: 0 auto;
 }
 
@@ -30,18 +34,17 @@
     height: 3.2em;
     margin: 0 auto;
 
+    color: #5a504e;
+    font-size: 14px;
+    line-height: 3.25em;
+    text-align: center;
+
+    background: #fff scroll;
+
     -webkit-background-size: 485px;
     -moz-background-size: 485px;
     -o-background-size: 485px;
     background-size: 485px;
-
-    font-family: Helvetica, Arial, sans-serif;
-    font-size: 14px;
-    text-align: center;
-
-    color: #5a504e;
-    background: #fff scroll;
-    line-height: 3.25em;
 
     -webkit-box-shadow: 0 0 0 1px #758AA8, 0 0 0 3px #fff, 0 0 0 6px #758AA8, 0 0 0 8px #fff;
     -moz-box-shadow: 0 0 0 1px #758AA8, 0 0 0 3px #fff, 0 0 0 6px #758AA8, 0 0 0 8px #fff;
@@ -57,8 +60,8 @@
     margin: 2em 1em;
     padding: .4em;
 
-    font-family: Helvetica, Arial, sans-serif;
     font-size: 14px;
+    vertical-align: middle;
 
     background-color: #fff;
 
@@ -66,8 +69,6 @@
     -moz-background-size: 485px;
     -o-background-size: 485px;
     background-size: 485px;
-
-    vertical-align: middle;
 
     -webkit-box-sizing: border-box;
     -moz-box-sizing: border-box;
@@ -85,7 +86,6 @@
     clear: both;
 
     color: #5a504e;
-
     font-size: 14px;
     font-weight: bold;
 
@@ -185,6 +185,7 @@
 @media (max-width: 887px) {
     .resume:before {
         position: absolute;
+
         content: "";
         line-height: 0;
 
@@ -193,9 +194,8 @@
         left: 0;
         right: 0;
 
-        margin: 0 auto;
-
         width: 3px;
+        margin: 0 auto;
 
         border: 2px solid #fff;
         background: #758AA8;
@@ -206,8 +206,8 @@
     }
 
     .resume:after {
-        clear: both;
         display: table;
+        clear: both;
 
         content: "";
         line-height: 0;
@@ -216,9 +216,9 @@
 
 @media (min-width: 888px) {
     .resume {
-        margin: 10em 0;
-
         height: 3px;
+
+        margin: 10em 0;
 
         background: #758AA8;
 
@@ -254,10 +254,11 @@
         position: absolute;
         content: "";
 
+        left: 50%;
+
         width: 3px;
         height: 36px;
 
-        left: 50%;
         margin-left: -2px;
 
         background-color: #758AA8;

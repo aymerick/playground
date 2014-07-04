@@ -98,12 +98,8 @@ SYNDROME_TRANSLATIONS = {
 DEFAULT_SYNDROME_STR = SYNDROME_TRANSLATIONS['en']
 
 IGNORE_URL_PREFIX = [
-  'http://www.williams-syndrome.org.uk/&',
-  'http://www.williams-syndrome.org/&',
-  'http://www.williams-syndrome.org/user/register',
-  'http://www.williams-syndrome.org/convention',
-  'http://www.williams-syndrome.org/camps',
-  'http://www.williams-syndrome.org/contact-us'
+  'http://www.williams-syndrome.org.uk',
+  'http://www.williams-syndrome.org',
 ]
 
 COUNTRIES_WIKIPEDIA_URL = "http://en.wikipedia.org/wiki/List_of_countries_and_dependencies_and_their_capitals_in_native_languages"
@@ -378,7 +374,7 @@ wiki_countries.each_with_index do |wiki_country, country_index|
     doc_parts = doc.xpath("//h3[@class='r']")
     doc_parts.each do |doc_part|
       title = doc_part.text
-      link = doc_part.at('a')[:href].gsub('/url?q=', '')
+      link = CGI::parse(URI(doc_part.at('a')[:href]).query)["q"].first
       desc = doc_part.at("./following::div").css('span.st').text
 
       next if ignore_url?(link)

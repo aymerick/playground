@@ -377,7 +377,7 @@ wiki_countries.each_with_index do |wiki_country, country_index|
       link = CGI::parse(URI(doc_part.at('a')[:href]).query)["q"].first
       desc = doc_part.at("./following::div").css('span.st').text
 
-      next if ignore_url?(link)
+      next if link.nil? || ignore_url?(link)
 
       total_results += 1
 

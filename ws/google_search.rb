@@ -325,7 +325,7 @@ wiki_countries.each_with_index do |wiki_country, country_index|
     eos
   end
 
-  next_country = if country_index < wiki_countries.count
+  next_country = if country_index < (wiki_countries.count - 1)
     nav_html += <<-eos
     <li><a href="./#{wiki_countries[country_index + 1][:country_en]}.html">&raquo;</a></li>
     eos

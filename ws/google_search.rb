@@ -131,10 +131,14 @@ def fetch_countries()
       [ :capital,    'td[4]/b[1]/text()' ],
       [ :lang,       'td[5]/a[1]/text()' ],
     ].each do |key, xpath|
-      result[key] = row.at_xpath(xpath).to_s.strip
+      val = row.at_xpath(xpath).to_s.strip
+      result[key] = val if (val != "")
     end
 
-    (result[:country] == "") ? nil : result
+    result[:country] = result[:country_en] if !result[:country]
+    result[:capital] = result[:capital_en] if !result[:capital]
+
+    result
   end.compact
 end
 
